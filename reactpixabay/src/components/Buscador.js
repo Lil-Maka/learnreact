@@ -13,22 +13,25 @@ class Buscador extends Component {
         // previene la acción por default del formulario, si le das a buscar, previene el texto url
         e.preventDefault();
 
-        //leer el ref, nombre del ref, current y value para leer un ref!
-        console.log(this.busquedaRef.current.value);
+        // tomamos el valor del input
+        const termino = this.busquedaRef.current.value;
+
+        // lo enviamos al componente principal
+        this.props.datosBusqueda(termino);
     }
 
     // el único método obligatorio en cada componente, dice que se imprime en cada componente
     render() {
-        return ( 
+        return (
             <form onSubmit={this.obtenerDatos}>
                 <div className="row">
-                    <div className="form-group col-md-8">
-                        <input ref={this.busquedaRef} type="text" className="form-control form-control-lg" 
-                        placeholder="Busca tu img" />
-                    </div>
-                    <div className="form-group col-md-4">
-                        <input type="submit" className="btn btn-lg btn-danger btn-block" value="buscar"/>
-                    </div>
+                        <div className="form-group col-md-8">
+                            <input ref={this.busquedaRef} type="text" className="form-control form-control-lg"
+                                placeholder="Busca tu img" />
+                        </div>
+                        <div className="form-group col-md-4">
+                            <input type="submit" className="btn btn-lg btn-danger btn-block" value="buscar" />
+                        </div>
                 </div>
             </form>
         );
